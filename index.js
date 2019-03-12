@@ -31,6 +31,11 @@ $('button#search').click(function(){
     weather(city, call_type);
 });
 
+$('button#search').click(function(){
+    $('div.forecast').addClass('animation');
+    $('div.weather').addClass('animation');
+})
+
 //API call methods
 //5 day forecast
 function forecast(city, call_type){
@@ -55,11 +60,13 @@ function today(json){
 
      //temperature
      $('div.weather #temperature').text(Math.round(json.main.temp));
+     colorTemp((Math.round(json.main.temp)),'div.weather #temperature');
      //high
      $('div.weather #high').text(Math.round(json.main.temp_max));
-
+    colorTemp((Math.round(json.main.temp_max)),'div.weather #high');
      //low
      $('div.weather #low').text(Math.round(json.main.temp_min));
+     colorTemp((Math.round(json.main.temp_min)),'div.weather #low');
 
       //wind
       $('div.weather #wind-mph').text(Math.round(json.wind.speed) + ' mph');
@@ -109,6 +116,7 @@ function divide(json){
         
         //temperature
         $('div.day'+dayNum+' #temperature').text(Math.round(json.list[item].main.temp));
+        colorTemp((Math.round(json.list[item].main.temp)),'div.day'+dayNum+' #temperature');
        
         //wind
         $('div.day'+dayNum+' #wind-mph').text(Math.round(json.list[item].wind.speed) + ' mph');
@@ -172,4 +180,57 @@ function date(date){
     var DateString = date.getFullYear()+'-'+month+'-'+day;
     return DateString;
 }
-//Increment date and day number
+//Temperature Colors
+function colorTemp(temp, selector){
+
+    switch(true){
+        case (temp < 0):
+        //blue - #22316C	
+        $(selector).css('color',' #22316C');
+
+        break;
+
+        case(temp > 0 && temp< 20):
+        //dark blue - #00008B
+        $(selector).css('color',' #00008B');
+
+        break;
+
+        case(temp > 20 && temp <40):
+        //blue - #0000CD
+        $(selector).css('color',' #0000CD');
+
+        break;
+
+        case(temp >40 && temp <60):
+        //light blue - #003EFF	
+        $(selector).css('color',' #003EFF');
+
+        break;
+
+        case(temp >60 && temp < 80):
+        //orange - #FF7F50
+        $(selector).css('color',' #FF7F50');
+
+        break;
+
+        case(temp >80 && temp < 100):
+        //red orange - #FF4500
+        //red orange - #FF4500
+        $(selector).css('color',' #FF4500');
+        break;
+
+        case(temp > 100):
+        //red - #FC1501
+        $(selector).css('color','#FC1501');
+        break;
+
+        default:
+        break;
+
+
+
+
+    }
+
+}

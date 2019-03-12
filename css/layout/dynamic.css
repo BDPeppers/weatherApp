@@ -13,6 +13,7 @@ body {
   background-position: cover;
   background-repeat: repeat;
   background-size: 80% 80%;
+  min-height: 100vh;
 }
 
 ::placeholder {
@@ -83,6 +84,7 @@ div.weather div.temp div.high, div.weather div.temp div.low {
 div.weather div.temp div.high span, div.weather div.temp div.low span {
   font-size: 2.5rem;
   padding-left: 0.5rem;
+  font-weight: 900;
 }
 div.weather div.temp div.temperature {
   flex-basis: 100%;
@@ -90,6 +92,7 @@ div.weather div.temp div.temperature {
   justify-content: center;
 }
 div.weather div.temp div.temperature span {
+  font-weight: 900;
   font-size: 2.7rem;
   padding-left: 0.5rem;
 }
@@ -149,11 +152,11 @@ div.forecast {
 }
 .day1 div.temp span, .day2 div.temp span, .day3 div.temp span, .day4 div.temp span, .day5 div.temp span {
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 900;
 }
 .day1 div.temp span#temperature, .day2 div.temp span#temperature, .day3 div.temp span#temperature, .day4 div.temp span#temperature, .day5 div.temp span#temperature {
   font-size: 3rem;
-  padding-left: 0.5rem;
+  padding: 0 0.5rem;
 }
 .day1 div.wind, .day2 div.wind, .day3 div.wind, .day4 div.wind, .day5 div.wind {
   display: flex;
@@ -169,6 +172,25 @@ div.forecast {
 .day1 div.wind h3, .day2 div.wind h3, .day3 div.wind h3, .day4 div.wind h3, .day5 div.wind h3 {
   font-size: 2rem;
   font-weight: 700;
+}
+
+div.forecast, div.weather {
+  display: none;
+  position: relative;
+}
+
+.animation {
+  display: flex !important;
+  animation: slide 1s ease;
+}
+
+@keyframes slide {
+  0% {
+    right: 100%;
+  }
+  100% {
+    right: 0%;
+  }
 }
 
 /*# sourceMappingURL=dynamic.css.map */
