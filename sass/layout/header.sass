@@ -1,0 +1,16 @@
+@import 'base'
+
+
+header
+    @include display(column)
+    align-items: center
+    h1.tagline
+        flex-basis: 55%
+        font-size: 4rem
+        text-align: center
+        padding: 1rem 0
+    div.search-bar
+        @include display(row)
+        justify-content: center
+        flex-basis: 40%
+        width: 100%

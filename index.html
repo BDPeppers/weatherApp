@@ -1,22 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    <!-- fontawesome for weather icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+        crossorigin="anonymous">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
     <link rel="stylesheet" href="css/main.css">
     <title>What it look like outside</title>
 </head>
+
 <body>
 
     <header>
-
+        <h1 class="tagline">How's the weather in your city?</h1>
+        <div class="search-bar">
+            <input type="text" id="city-name" placeholder="City Name or Zip Code"><button id="search">Search</button>
+        </div>
     </header>
 
     <!-- the dynamic content -->
-    <div></div>
+    <!-- today's weather -->
+    <div class="weather">
+        <div class="day">
+            <h2 class="date" id="today">Today</h2>
+        </div>
+        <div class="icon">
+            <i class="fas fa-rainbow"></i>
+        </div>
+        <div class="temp">
 
-    <footer></footer>
-    
+            <div class="temperature"><span>Temp:</span><span id="temperature">0</span><span>°</span></div>
+            <div class="high"><span>High:</span><span id="high">0</span><span>°</span></div>
+            <div class="low"><span>Low:</span><span id="low">0</span><span>°</span></div>
+            
+        </div>
+        <div class="wind">
+            <i class="fas fa-wind"></i>
+            <h3 id="wind-mph">20mph</h3>
+        </div>
+
+    </div>
+
+    <!-- forecast -->
+    <div class="forecast">
+        <div class="day1">
+            <h2 class="date" id="day">Date</h2>
+            <div class="icon">
+                <i class="fas fa-rainbow"></i>
+            </div>
+            <div class="temp">
+                <div class="temperature"><span>Temp:</span><span id="temperature">0</span><span>°</span></div>
+            </div>
+
+            <div class="wind">
+                <i class="fas fa-wind"></i>
+                <h3 id="wind-mph">20mph</h3>
+            </div>
+
+        </div>
+        <div class="day2">
+            <h2 class="date" id="day">Date</h2>
+            <div class="icon">
+                <i class="fas fa-rainbow"></i>
+            </div>
+            <div class="temp">
+                <div class="temperature"><span>Temp:</span><span id="temperature">0</span><span>°</span></div>
+            </div>
+            
+                <div class="wind">
+                    <i class="fas fa-wind"></i>
+                    <h3 id="wind-mph">20mph</h3>
+                </div>
+            
+
+        </div>
+        <div class="day3">
+            <h2 class="date" id="day">Date</h2>
+            <div class="icon">
+                <i class="fas fa-rainbow"></i>
+            </div>
+            <div class="temp">
+                <div class="temperature"><span>Temp:</span><span id="temperature">0</span><span>°</span></div>
+            </div>
+            
+                <div class="wind">
+                    <i class="fas fa-wind"></i>
+                    <h3 id="wind-mph">20mph</h3>
+                </div>
+            
+
+        </div>
+        <div class="day4">
+            <h2 class="date" id="day">Date</h2>
+            <div class="icon">
+                <i class="fas fa-rainbow"></i>
+            </div>
+            <div class="temp">
+                <div class="temperature"><span>Temp:</span><span id="temperature">0</span><span>°</span></div>
+            </div>
+            
+                <div class="wind">
+                    <i class="fas fa-wind"></i>
+                    <h3 id="wind-mph">20mph</h3>
+                </div>
+            
+        </div>
+
+        <div class="day5">
+            <h2 class="date" id="day">Date</h2>
+            <div class="icon">
+                <i class="fas fa-rainbow"></i>
+            </div>
+            <div class="temp">
+                <div class="temperature"><span>Temp:</span><span id="temperature">0</span><span>°</span></div>
+            </div>
+            
+                <div class="wind">
+                    <i class="fas fa-wind"></i>
+                    <h3 id="wind-mph">20mph</h3>
+                </div>
+            
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
 </body>
+
 </html>

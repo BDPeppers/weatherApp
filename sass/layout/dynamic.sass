@@ -1,0 +1,101 @@
+@import 'base'
+
+div.weather
+    padding-top: 2rem
+    margin: auto
+    width: 80%
+    @include display(column)
+    div.day
+        display: flex
+        justify-content: center
+        h2
+            font-size: 2.7rem
+    div.icon
+        display: flex
+        justify-content: center
+        i
+            font-size: 8rem
+    div.temp
+        @include display(row)
+        flex-wrap: wrap
+        div.high, div.low
+            flex-basis: 50%
+            display: flex
+            justify-content: center
+            span
+                font-size: 2.5rem
+                padding-left: .5rem
+        div.temperature
+            flex-basis: 100%
+            display: flex
+            justify-content: center
+            span
+                font-size: 2.7rem
+                padding-left: .5rem
+    div.wind
+        @include display(column)
+        align-items: center
+        h3
+            font-size: 2rem
+        i
+            font-size: 4rem
+
+div.forecast
+    @include display(row)
+    justify-content: space-around
+    padding-top: 3rem
+    flex-wrap: wrap
+    width: 90%
+    margin: auto
+   
+
+
+.day1, .day2, .day3, .day4, .day5
+    @include display(row)
+    flex-basis: 100%
+    padding: .5rem 0
+    margin: .5rem 0
+   
+    h2.date
+        text-align: center
+        font-size: 2.7rem
+        font-weight: 700
+        display: flex
+        align-items: center
+        flex-basis: 20%
+        padding-left: 1rem
+        
+    div.icon
+        display: flex
+        justify-content: center
+        font-size: 5rem
+        flex-basis: 25%
+
+    div.temp
+        display: flex
+        justify-content: center
+        flex-basis: 25%
+        div.temperature
+            display: flex
+            justify-content: center
+            align-items: center
+        span
+            font-size: 2rem
+            font-weight: 700
+        span#temperature
+            font-size: 3rem
+            padding-left: .5rem
+        
+    div.wind
+        display: flex
+        align-items: center
+        flex-basis: 25%
+        justify-content: center
+        @include display(column)
+        i
+            font-size: 3rem
+        h3
+            font-size: 2rem
+            font-weight: 700
+
+
