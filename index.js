@@ -12,6 +12,26 @@ var theJSON = "";
 var someJSON;
 var call_type;
 
+//Date Formatter ~ takes in date and returns string format
+//similar to openweahterapi JSON date format
+function dateString(date){
+    // var today = new Date();
+    var month; var day;
+    if((date.getMonth()+1).toString().length===1){
+        month = 0+''+(date.getMonth()+1);
+    }else{
+        month = ''+(date.getMonth()+1);
+    }
+
+    if((date.getDate()+1).toString().length===1){
+        day = 0+''+(date.getDate());
+    }else{
+        day = ''+(date.getDate());
+    }
+    var DateString = date.getFullYear()+'-'+month+'-'+day;
+    return DateString;
+}
+
 $('button#search').click(function(){
     city = document.getElementById('city-name').value;
     // city = $('city-name').val();
@@ -56,7 +76,7 @@ function today(json){
     someJSON = json;
     //todays date
     var today = new Date();
-    $('div.day h2#today').text(date(today));
+    $('div.day h2#today').text(dateString(today));
 
      //temperature
      $('div.weather #temperature').text(Math.round(json.main.temp));
@@ -109,8 +129,16 @@ function divide(json){
     var dayNum =1;
     var date;
     var item =0;
+
+    var today = new Date();
     
     for(var x =1; x<=5; x++){
+        //day increment
+        while(json.list[item].dt_txt.substring(0,10).valueOf() ==  dateString(today).valueOf()){
+            item++;
+            console.log(item);
+        }
+        today.setDate(today.getDate()+1);
         date = (json.list[item].dt_txt).substring(0,10);
         $('div.day'+dayNum+' #day').text(date);
         
@@ -151,35 +179,14 @@ function divide(json){
             break;
         }
         dayNum++;  
-        //day increment
-        while((json.list[item].dt_txt).substring(0,10).valueOf() ===  date.valueOf()){
-            item++;
-        }
+        
     }
 }
 
 
 
 
-//Date Formatter ~ takes in date and returns string format
-//similar to openweahterapi JSON date format
-function date(date){
-    // var today = new Date();
-    var month; var day;
-    if((date.getMonth()+1).toString().length===1){
-        month = 0+''+(date.getMonth()+1);
-    }else{
-        month = ''+(date.getMonth()+1);
-    }
 
-    if((date.getDate()+1).toString().length===1){
-        day = 0+''+(date.getDate());
-    }else{
-        day = ''+(date.getDate());
-    }
-    var DateString = date.getFullYear()+'-'+month+'-'+day;
-    return DateString;
-}
 //Temperature Colors
 function colorTemp(temp, selector){
 
@@ -190,31 +197,31 @@ function colorTemp(temp, selector){
 
         break;
 
-        case(temp > 0 && temp< 20):
+        case(temp >= 0 && temp <= 20):
         //dark blue - #00008B
         $(selector).css('color',' #00008B');
 
         break;
 
-        case(temp > 20 && temp <40):
+        case(temp > 20 && temp <= 40):
         //blue - #0000CD
         $(selector).css('color',' #0000CD');
 
         break;
 
-        case(temp >40 && temp <60):
+        case(temp > 40 && temp <= 60):
         //light blue - #003EFF	
         $(selector).css('color',' #003EFF');
 
         break;
 
-        case(temp >60 && temp < 80):
+        case(temp > 60 && temp <= 80):
         //orange - #FF7F50
         $(selector).css('color',' #FF7F50');
 
         break;
 
-        case(temp >80 && temp < 100):
+        case(temp >80 && temp <= 100):
         //red orange - #FF4500
         //red orange - #FF4500
         $(selector).css('color',' #FF4500');
