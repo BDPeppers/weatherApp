@@ -132,15 +132,21 @@ function divide(json) {
     theJSON = json;
 
     var dayNum = 1;
-    var date; //day 2
     var item = 0;
+    var date=(json.list[0].dt_txt).substring(0, 10); //day 2
+   
 
     var today = new Date();
 
     for (var x = 1; x <= 5; x++) {
+        //day increment
+        while (json.list[item].dt_txt.substring(0, 10).valueOf() == date) {
+            item++;
+        }
 
         // today.setDate(today.getDate()+1);
         date = (json.list[item].dt_txt).substring(0, 10);
+        
         $('div.day' + dayNum + ' #day').text(date);
 
         //temperature
@@ -180,10 +186,7 @@ function divide(json) {
                 break;
         }
 
-        //day increment
-        while (json.list[item].dt_txt.substring(0, 10).valueOf() == date) {
-            item++;
-        }
+        
         dayNum++;
 
     }
