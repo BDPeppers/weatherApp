@@ -148,12 +148,15 @@ function divide(json) {
 
     theJSON = json;
 
+    var today = new Date();
+
     var dayNum = 1;
     var item = 0;
-    var date = (json.list[0].dt_txt).substring(0, 10); //day 2
+    var date = dateString(today); //day 2
 
 
-    var today = new Date();
+    
+
 
     for (var x = 1; x <= 5; x++) {
         //day increment
