@@ -60,20 +60,37 @@ $('button#search').click(function () {
 //API call methods
 //5 day forecast
 function forecast(city, call_type) {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?${call_type}=${city}&appID=${apiID}&units=imperial`).then(function (response) {
-        return response.json();
-    }).then(response => {
-        divide(response)
-    });
+    if (location.protocol === 'http:') {
+        fetch(`http://api.openweathermap.org/data/2.5/forecast?${call_type}=${city}&appID=${apiID}&units=imperial`).then(function (response) {
+            return response.json();
+        }).then(response => {
+            divide(response)
+        });
+    } else {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?${call_type}=${city}&appID=${apiID}&units=imperial`).then(function (response) {
+            return response.json();
+        }).then(response => {
+            divide(response)
+        });
+    }
+
 }
 
 // current weather
 function weather(city, call_type) {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?${call_type}=${city}&appID=${apiID}&units=imperial`).then(function (response) {
-        return response.json();
-    }).then(response => {
-        today(response)
-    });
+    if (location.protocol === 'http:') {
+        fetch(`http://api.openweathermap.org/data/2.5/weather?${call_type}=${city}&appID=${apiID}&units=imperial`).then(function (response) {
+            return response.json();
+        }).then(response => {
+            today(response)
+        });
+    } else {
+        fetch(`http://api.openweathermap.org/data/2.5/weather?${call_type}=${city}&appID=${apiID}&units=imperial`).then(function (response) {
+            return response.json();
+        }).then(response => {
+            today(response)
+        });
+    }
 }
 
 // today's weather
@@ -133,8 +150,8 @@ function divide(json) {
 
     var dayNum = 1;
     var item = 0;
-    var date=(json.list[0].dt_txt).substring(0, 10); //day 2
-   
+    var date = (json.list[0].dt_txt).substring(0, 10); //day 2
+
 
     var today = new Date();
 
@@ -146,7 +163,7 @@ function divide(json) {
 
         // today.setDate(today.getDate()+1);
         date = (json.list[item].dt_txt).substring(0, 10);
-        
+
         $('div.day' + dayNum + ' #day').text(date);
 
         //temperature
@@ -186,7 +203,7 @@ function divide(json) {
                 break;
         }
 
-        
+
         dayNum++;
 
     }
