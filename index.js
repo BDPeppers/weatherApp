@@ -85,7 +85,7 @@ function weather(city, call_type) {
             today(response)
         });
     } else {
-        fetch(`http://api.openweathermap.org/data/2.5/weather?${call_type}=${city}&appID=${apiID}&units=imperial`).then(function (response) {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?${call_type}=${city}&appID=${apiID}&units=imperial`).then(function (response) {
             return response.json();
         }).then(response => {
             today(response)
